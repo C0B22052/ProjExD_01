@@ -27,7 +27,10 @@ def main():
         screen.blit(bg_img, [-s, 0]) #練習5
         screen.blit(bg_img, [1600-s, 0]) #バックグランドに張り付けている
         
-        screen.blit(kokaton3s[tmr%2],[300,200])
+        if x%160>=80:
+            screen.blit(kokaton3s[0],[300,200])
+        else:
+            screen.blit(kokaton3s[1],[300,200])
         
         pg.display.update()
         clock.tick(100)
