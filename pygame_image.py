@@ -6,6 +6,8 @@ def main():
     screen = pg.display.set_mode((800, 600))
     clock  = pg.time.Clock()
     bg_img = pg.image.load("ex01-20230418/fig/pg_bg.jpg")
+    bg_imgs = pg.transform.flip(bg_img, True, False)
+    #bg_img = pg.transform.scale("ex01-20230418/fig/pg_bg.jpg",(1,1))
     kokaton3 = pg.image.load("ex01-20230418/fig/3.png") #練習問題2
     kokaton3 = pg.transform.flip(kokaton3, True, False)
     kokaton3s = [kokaton3, pg.transform.rotozoom(kokaton3,10,1.0)] #練習問題3
@@ -20,14 +22,15 @@ def main():
         
         x += 1 
         
-        s = x%1600
+        s = x%3200
               
         
         tmr += 1
-        screen.blit(bg_img, [-s, 0]) #練習5
-        screen.blit(bg_img, [1600-s, 0]) #バックグランドに張り付けている
         
-        if x%160>=80:
+        screen.blit(bg_img, [-s, 0]) #練習5
+        screen.blit(bg_imgs, [1600-s, 0]) #バックグランドに張り付けている
+        screen.blit(bg_img, [3200-s, 0])
+        if tmr%160>=80:
             screen.blit(kokaton3s[0],[300,200])
         else:
             screen.blit(kokaton3s[1],[300,200])
@@ -40,3 +43,4 @@ if __name__ == "__main__":
     main()
     pg.quit()
     sys.exit()
+
